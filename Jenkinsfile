@@ -38,5 +38,29 @@ pipeline
                 sh './mvnw test'
             }
         }
+
+        stage('Package')
+        {
+            steps
+            {
+                sh './mvnw package -DskipTests'
+            }
+        }
+
+        stage('Checking Package Contents')
+        {
+            steps
+            {
+                sh 'ls -lh target/'
+            }
+        }
+
+        stage('Docker Build')
+        {
+            steps
+            {
+                sh 'docker build -t switch_platform .'
+            }
+        }
     }
 }
