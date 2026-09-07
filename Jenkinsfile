@@ -2,6 +2,15 @@ pipeline
 {
     agent any
 
+    environment
+    {
+        SPRING_DATASOURCE_URL = 'jdbc:mysql://mysql:3306/switch_platform'
+        SPRING_DATASOURCE_USERNAME = 'root'
+        SPRING_DATASOURCE_PASSWORD = 'root'
+        SPRING_DATA_REDIS_HOST = 'redis'
+        SPRING_DATA_REDIS_PORT = '6379'
+    }
+    
     stages
     {
         stage('Environment Check')
